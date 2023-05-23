@@ -1,0 +1,55 @@
+<!-- NOT COMPLETED -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body onload="getData(8)">
+    <h1>UPDATE USER</h1>
+    <input type="text" id="customer_name" value="" required>
+    <input type="text" id="customer_city" placeholder="" required>
+    <input type="number" id="customer_age" placeholder="" required>
+    <button onclick="update_customer()">Update</button>
+
+    <script>
+        const MY_SERVER = 'http://127.0.0.1:5000';
+        let current_id = -1
+        const getData = (id) => {
+            axios.get(MY_SERVER + `/view/${id}`).then(response => {
+                data = response.data
+                document.getElementById("customer_name").value = data.name
+                document.getElementById("customer_city").value = data.city
+                document.getElementById("customer_age").value = data.age
+
+            });
+        };
+        const update_customer = async (current_idd) => {
+            data = {
+                name: customer_name.value,
+                city: customer_city.value,
+                age: customer_age.value,
+
+            }
+            console.log(data);
+            // WE ARE SENDING THE DATA WITH THIS LINE!!!!
+            customers = await axios.post(MY_SERVER + `/update/${current_id}`, data) }
+        
+        
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
